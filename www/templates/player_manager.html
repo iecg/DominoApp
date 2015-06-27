@@ -1,0 +1,26 @@
+<ion-view view-title="Player Manager">
+    <ion-nav-buttons side="right">
+        <button class="button button-icon" ng-click="showAddPlayerPopup()">
+            <i class="icon ion-plus-round"></i>
+        </button>
+    </ion-nav-buttons>
+    <ion-content>
+        <div class="card" ng-hide="!players.length">
+            <div class="item item-divider">Players</div>
+            <div class="item item-button-right" ng-repeat="player in players track by $index">
+                {{ player.name }}
+                <div class="buttons">
+                    <button class="button button-icon" ng-click="showEditPlayerPopup($index)">
+                        <i class="icon ion-edit"></i>
+                    </button>
+                    <button class="button button-icon button-custom" ng-click="removePlayer($index)">
+                        <i class="icon ion-trash-a"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="card" ng-hide="players.length">
+            <div class="item">No players found</div>
+        </div>
+    </ion-content>
+</ion-view>

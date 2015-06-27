@@ -1,0 +1,63 @@
+/* Empty. Add your own CSS if you like */
+.logo {
+    display: block;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.item-divider {
+    background-color: #444;
+    color: white;
+}
+
+.item {
+    font-size: 17px;
+}
+
+textarea, input[type="text"], input[type="number"] {
+    font-size: 17px;
+}
+
+.popup-container .popup {
+    width: 300px;
+    border-radius: 2px;
+    background-color: white;
+}
+
+.popup-head {
+    background-color: #444;
+    border-radius: 2px 2px 0px 0px;
+}
+
+.popup-title {
+    color: white;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.button {
+    font-size: 17px;
+    vertical-align: middle;
+}
+
+.bar .title {
+    font-size: 18px;
+}
+
+.input-label {
+    font-size: 17px;
+}
+
+.item-select select {
+    font-size: 17px;
+}
+
+.item-divider > .buttons > .button .icon:before {
+    color: #fff;
+    font-size: 27px;
+}
+
+.item-divider > .buttons {
+    top: 2px;
+}
