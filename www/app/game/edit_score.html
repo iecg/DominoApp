@@ -1,0 +1,25 @@
+<ion-modal-view>
+  <ion-header-bar class="bar bar-header bar-dark">
+    <h1 class="title">Edit Score</h1>
+    <button class="button button-clear button-primary" ng-click="editScoreModal.hide()">Cancel</button>
+  </ion-header-bar>
+  <ion-content class="">
+    <div class="card">
+      <div class="item item-divider">
+        Score
+      </div>
+      <div class="item item-button-right" ng-repeat="score in game.teams[teamId].scores track by $index">
+        {{ score }} - {{ totalScore(game.teams[teamId].scores.slice(0,$index + 1)) }}
+        <div class="buttons">
+          <button class="button button-icon" ng-click="showEditScorePopup($index)">
+            <i class="icon ion-edit"></i>
+          </button>
+          <button class="button button-icon" ng-click="removeScore($index)">
+            <i class="icon ion-trash-a"></i>
+          </button>
+        </div>
+      </div>
+      <div class="item" ng-hide="game.teams[teamId].scores.length">No scores found</div>
+    </div>
+  </ion-content>
+</ion-modal-view>

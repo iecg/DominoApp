@@ -1,0 +1,30 @@
+<ion-view view-title="New Game">
+  <ion-content class="padding">
+    <div class="card" ng-repeat="team in game.teams">
+      <div class="item item-divider">Team {{ getTeam($index) }} Members</div>
+      <label class="item item-input item-select" ng-repeat="member in team.members">
+        <div class="input-label">
+          Member #{{ $index + 1 }}
+        </div>
+        <select ng-model="game.teams[$parent.$index].members[$index]"
+        ng-options="player.name for player in players | excludeSelectedPlayers:game.teams:$parent.$index:$index"></select>
+      </label>
+    </div>
+    <div class="card">
+      <div class="item item-divider">Preferences</div>
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Winning Score
+        </div>
+        <select ng-model="game.maxscore">
+          <option selected>200</option>
+          <option>100</option>
+        </select>
+      </label>
+    </div>
+    <button class="button button-block button-dark" ng-click="newGame()">
+      Start New Game
+    </button>
+    <!--<pre>{{ game | json }}</pre>-->
+  </ion-content>
+</ion-view>

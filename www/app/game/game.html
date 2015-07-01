@@ -1,0 +1,21 @@
+<ion-view view-title="Domino Score">
+  <ion-content>
+    <div class="card" ng-repeat="team in game.teams">
+      <div class="item item-divider">
+        {{ team.members[0].name }} / {{ team.members[1].name }}
+      </div>
+      <div class="item">
+        Total Score {{ totalScore(team.scores) }}
+      </div>
+      <div class="item item-icon-left" ng-click="showAddScorePopup($index)">
+        <i class="icon ion-plus-round"></i>
+        Add Score
+      </div>
+      <div class="item item-icon-left" ng-click="showEditScoreModal($index)">
+        <i class="icon ion-edit"></i>
+        Edit Score
+      </div>
+    </div>
+    <!--<pre>{{ game | json }}</pre>-->
+  </ion-content>
+</ion-view>
