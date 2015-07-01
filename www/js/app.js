@@ -10,12 +10,12 @@ angular.module('DominoApp', ['ionic', 'DominoApp.controllers'])
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
             if (window.cordova && window.cordova.plugins.Keyboard) {
-                cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true)
+                cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
             }
             if (window.StatusBar) {
-                StatusBar.styleDefault()
+                StatusBar.styleDefault();
             }
-        })
+        });
     })
 
     .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
@@ -71,38 +71,38 @@ angular.module('DominoApp', ['ionic', 'DominoApp.controllers'])
         $ionicConfigProvider.views.maxCache(0);
 
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/')
+        $urlRouterProvider.otherwise('/');
     })
 
     .directive('focusMe', function ($timeout) {
         return {
             link: function (scope, element, attrs) {
                 $timeout(function () {
-                    element[0].focus()
+                    element[0].focus();
                 }, 200);
             }
-        }
+        };
     })
 
     .filter('excludeSelectedPlayers', function () {
         return function (players, teams, teamId, memberId) {
             if (!players || !players.length) {
-                return
+                return;
             }
             function comparePlayers(player_) {
                 return function (player) {
                     if (player.name !== player_.name) {
-                        return true
+                        return true;
                     }
-                }
+                };
             }
             for (var n = 0; n < 2; n++) {
                 for (var m = 0; m < 2; m++) {
                     if (teamId !== n || memberId !== m) {
-                        players = players.filter(comparePlayers(teams[n].members[m]))
+                        players = players.filter(comparePlayers(teams[n].members[m]));
                     }
                 }
             }
-            return players
-        }
+            return players;
+        };
     });

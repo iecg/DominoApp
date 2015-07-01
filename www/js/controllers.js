@@ -6,12 +6,12 @@ angular.module('DominoApp.controllers', [])
                 $ionicPopup.alert({
                     title: 'There is no saved game',
                     buttons: [{text: 'OK', type: 'button-dark'}]
-                })
+                });
             }
             else {
-                $state.go('game')
+                $state.go('game');
             }
-        }
+        };
     }])
 
     .controller('NewGameCtrl', ['$scope', '$state', '$window', '$timeout', function ($scope, $state, $window, $timeout) {
@@ -24,7 +24,7 @@ angular.module('DominoApp.controllers', [])
                     losses: 0
                 };
                 player.name = "Player " + i;
-                $scope.players.push(player)
+                $scope.players.push(player);
             }
             $scope.game = {"teams":[{"members":[{},{}],"scores":[]},{"members":[{},{}],"scores":[]}],"maxscore":"200"};
             $scope.game.teams[0].members[0] = $scope.players[$scope.players.length - 4];
@@ -34,22 +34,22 @@ angular.module('DominoApp.controllers', [])
         }, 300);
         $scope.newGame = function () {
             $state.go('game');
-            $window.localStorage['game'] = JSON.stringify($scope.game)
+            $window.localStorage['game'] = JSON.stringify($scope.game);
         };
         $scope.getTeam = function (teamId) {
             if (teamId) {
-                return 'B'
+                return 'B';
             }
             else {
-                return 'A'
+                return 'A';
             }
-        }
+        };
     }])
 
     .controller('GameCtrl', ['$scope', '$ionicModal', '$ionicPopup', '$state', '$window', '$ionicHistory', '$timeout', function ($scope, $ionicModal, $ionicPopup, $state, $window, $ionicHistory, $timeout) {
         $timeout(function () {
             $scope.game = JSON.parse($window.localStorage['game']);
-            $scope.game.newScore = null
+            $scope.game.newScore = null;
             $scope.players = JSON.parse($window.localStorage['players']);
             $scope.history = JSON.parse($window.localStorage['history'] || '[]');
         }, 300);
@@ -57,20 +57,20 @@ angular.module('DominoApp.controllers', [])
         $ionicModal.fromTemplateUrl('templates/edit_score.html', {
             scope: $scope
         }).then(function (modal) {
-            $scope.editScoreModal = modal
+            $scope.editScoreModal = modal;
         });
 
         $scope.totalScore = function (scoreArray) {
             var totalScore = 0;
             for (var i = 0; i < scoreArray.length; i++) {
-                totalScore += scoreArray[i]
+                totalScore += scoreArray[i];
             }
-            return totalScore
+            return totalScore;
         };
 
         $scope.showEditScoreModal = function (teamId) {
             $scope.teamId = teamId;
-            $scope.editScoreModal.show()
+            $scope.editScoreModal.show();
         };
 
         $scope.showEditScorePopup = function (scoreId) {
@@ -87,29 +87,29 @@ angular.module('DominoApp.controllers', [])
                         type: 'button-dark',
                         onTap: function (e) {
                             if (!angular.isNumber($scope.game.newScore) || $scope.game.newScore <= 0) {
-                                e.preventDefault()
+                                e.preventDefault();
                             } else {
-                                $scope.editScore(scoreId)
+                                $scope.editScore(scoreId);
                             }
                         }
                     }
                 ]
             });
             myPopup.then(function (res) {
-                $scope.game.newScore = null
-            })
+                $scope.game.newScore = null;
+            });
         };
 
         $scope.editScore = function (scoreId) {
             $scope.game.teams[$scope.teamId].scores[scoreId] = parseInt($scope.game.newScore);
             $window.localStorage['game'] = JSON.stringify($scope.game);
-            $scope.editScoreModal.hide()
+            $scope.editScoreModal.hide();
         };
 
         $scope.removeScore = function (scoreId) {
             $scope.game.teams[$scope.teamId].scores.splice(scoreId, 1);
             $window.localStorage['game'] = JSON.stringify($scope.game);
-            $scope.editScoreModal.hide()
+            $scope.editScoreModal.hide();
         };
 
         $scope.showAddScorePopup = function (teamId) {
@@ -127,17 +127,17 @@ angular.module('DominoApp.controllers', [])
                         type: 'button-dark',
                         onTap: function (e) {
                             if (!angular.isNumber($scope.game.newScore) || $scope.game.newScore <= 0) {
-                                e.preventDefault()
+                                e.preventDefault();
                             } else {
-                                $scope.addNewScore()
+                                $scope.addNewScore();
                             }
                         }
                     }
                 ]
             });
             myPopup.then(function (res) {
-                $scope.game.newScore = null
-            })
+                $scope.game.newScore = null;
+            });
         };
 
         $scope.addNewScore = function () {
@@ -155,16 +155,16 @@ angular.module('DominoApp.controllers', [])
                     });
                     $scope.updateMatchHistory();
                     $scope.updatePlayers();
-                    $state.go('home')
-                })
+                    $state.go('home');
+                });
             }
         };
 
         $scope.updateMatchHistory = function() {
-            if($scope.game.teams[0].members[0].name === "Player 1") { return }
+            if($scope.game.teams[0].members[0].name === "Player 1") { return; }
             var history = {"teams":[{"members":[],"score":""},{"members":[],"score":""}],"date":null};
             history.date = new Date();
-            if ($scope.teamId == 0) {
+            if ($scope.teamId === 0) {
                 history.teams[0].members.push($scope.game.teams[0].members[0].name);
                 history.teams[0].members.push($scope.game.teams[0].members[1].name);
                 history.teams[0].score = $scope.totalScore($scope.game.teams[0].scores);
@@ -193,7 +193,7 @@ angular.module('DominoApp.controllers', [])
         };
 
         $scope.updatePlayers = function() {
-            if($scope.game.teams[0].members[0].name === "Player 1") { return }
+            if($scope.game.teams[0].members[0].name === "Player 1") { return; }
             $scope.updatePlayer($scope.game.teams[0].members[0]);
             $scope.updatePlayer($scope.game.teams[0].members[1]);
             $scope.updatePlayer($scope.game.teams[1].members[0]);
@@ -213,7 +213,7 @@ angular.module('DominoApp.controllers', [])
 
     .controller('MatchHistoryCtrl', ['$scope', '$window', '$timeout', '$ionicPopup', function ($scope, $window, $timeout, $ionicPopup) {
         $timeout(function () {
-            $scope.history = JSON.parse($window.localStorage['history'])
+            $scope.history = JSON.parse($window.localStorage['history']);
         }, 300);
         $scope.clearMatchHistory = function () {
             $ionicPopup.confirm({
@@ -227,12 +227,12 @@ angular.module('DominoApp.controllers', [])
                         type: 'button-dark',
                         onTap: function (e) {
                             $window.localStorage['history'] = JSON.stringify([]);
-                            $scope.history = []
+                            $scope.history = [];
                         }
                     }
                 ]
             });
-        }
+        };
     }])
 
     .controller('PlayerRecordsCtrl', ['$scope', '$window', '$timeout', '$ionicPopup', function ($scope, $window, $timeout, $ionicPopup) {
@@ -254,18 +254,18 @@ angular.module('DominoApp.controllers', [])
                                 $scope.players[i].wins = 0;
                                 $scope.players[i].losses = 0;
                             }
-                            $window.localStorage['players'] = JSON.stringify($scope.players)
+                            $window.localStorage['players'] = JSON.stringify($scope.players);
                         }
                     }
                 ]
             });
-        }
+        };
     }])
 
     .controller('PlayerManagerCtrl', ['$scope', '$window', '$timeout', '$ionicPopup', function ($scope, $window, $timeout, $ionicPopup) {
         $timeout(function () {
             $scope.players = JSON.parse($window.localStorage['players'] || '[]');
-            $scope.players.newPlayer = null
+            $scope.players.newPlayer = null;
         }, 300);
         $scope.showAddPlayerPopup = function () {
             var myPopup = $ionicPopup.show({
@@ -280,18 +280,18 @@ angular.module('DominoApp.controllers', [])
                         text: '<b>Add</b>',
                         type: 'button-dark',
                         onTap: function (e) {
-                            if ($scope.players.newPlayer == null) {
-                                e.preventDefault()
+                            if ($scope.players.newPlayer === null) {
+                                e.preventDefault();
                             } else {
-                                $scope.addNewPlayer()
+                                $scope.addNewPlayer();
                             }
                         }
                     }
                 ]
             });
             myPopup.then(function (res) {
-                $scope.players.newPlayer = null
-            })
+                $scope.players.newPlayer = null;
+            });
         };
         $scope.addNewPlayer = function () {
             var player = {
@@ -302,9 +302,9 @@ angular.module('DominoApp.controllers', [])
             player.name = $scope.players.newPlayer;
             $scope.players.push(player);
             $scope.players.sort(function (a, b) {
-                return a.name.localeCompare(b.name)
+                return a.name.localeCompare(b.name);
             });
-            $window.localStorage['players'] = JSON.stringify($scope.players)
+            $window.localStorage['players'] = JSON.stringify($scope.players);
         };
         $scope.showEditPlayerPopup = function (index) {
             $scope.players.newPlayer = $scope.players[index].name;
@@ -320,25 +320,25 @@ angular.module('DominoApp.controllers', [])
                         text: '<b>Edit</b>',
                         type: 'button-dark',
                         onTap: function (e) {
-                            if ($scope.players.newPlayer == null) {
-                                e.preventDefault()
+                            if ($scope.players.newPlayer === null) {
+                                e.preventDefault();
                             } else {
-                                $scope.renamePlayer(index)
+                                $scope.renamePlayer(index);
                             }
                         }
                     }
                 ]
             });
             myPopup.then(function (res) {
-                $scope.players.newPlayer = null
-            })
+                $scope.players.newPlayer = null;
+            });
         };
         $scope.renamePlayer = function (index) {
             $scope.players[index].name = $scope.players.newPlayer;
             $scope.players.sort(function (a, b) {
-                return a.name.localeCompare(b.name)
+                return a.name.localeCompare(b.name);
             });
-            $window.localStorage['players'] = JSON.stringify($scope.players)
+            $window.localStorage['players'] = JSON.stringify($scope.players);
         };
         $scope.removePlayer = function (playerId) {
             $ionicPopup.confirm({
@@ -352,10 +352,10 @@ angular.module('DominoApp.controllers', [])
                         type: 'button-dark',
                         onTap: function (e) {
                             $scope.players.splice(playerId, 1);
-                            $window.localStorage['players'] = JSON.stringify($scope.players)
+                            $window.localStorage['players'] = JSON.stringify($scope.players);
                         }
                     }
                 ]
             });
-        }
+        };
     }]);
