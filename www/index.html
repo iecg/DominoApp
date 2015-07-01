@@ -1,32 +1,38 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-        <title></title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <title></title>
 
-        <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-        <link href="css/style.css" rel="stylesheet">
+  <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
 
-        <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
-        <link href="css/ionic.app.css" rel="stylesheet">
-        -->
+  <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+  <link href="css/ionic.app.css" rel="stylesheet">
+  -->
 
-        <!-- ionic/angularjs js -->
-        <script src="lib/ionic/js/ionic.bundle.js"></script>
+  <!-- ionic/angularjs js -->
+  <script src="lib/ionic/js/ionic.bundle.js"></script>
 
-        <!-- cordova script (this will be a 404 during development) -->
-        <script src="cordova.js"></script>
+  <!-- cordova script (this will be a 404 during development) -->
+  <script src="cordova.js"></script>
 
-        <!-- your app's js -->
-        <script src="js/app.js"></script>
-        <script src="js/controllers.js"></script>
-    </head>
+  <!-- your app's js -->
+  <script src="app/app.js"></script>
+  <script src="app/about/about.js"></script>
+  <script src="app/game/game.js"></script>
+  <script src="app/home/home.js"></script>
+  <script src="app/match_history/match_history.js"></script>
+  <script src="app/new_game/new_game.js"></script>
+  <script src="app/player_manager/player_manager.js"></script>
+  <script src="app/player_records/player_records.js"></script>
+</head>
 
-    <body ng-app="DominoApp">
-        <ion-nav-bar class="bar-dark" align-title="center">
-            <ion-nav-back-button></ion-nav-back-button>
-        </ion-nav-bar>
-        <ion-nav-view></ion-nav-view>
-    </body>
+<body ng-app="app">
+  <ion-nav-bar class="bar-dark" align-title="center">
+    <ion-nav-back-button></ion-nav-back-button>
+  </ion-nav-bar>
+  <ion-nav-view></ion-nav-view>
+</body>
 </html>
