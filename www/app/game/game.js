@@ -107,19 +107,33 @@ angular.module('app.game', [])
     $scope.game.teams[$scope.teamId].scores.push(parseInt($scope.game.newScore));
     $window.localStorage.game = JSON.stringify($scope.game);
     if ($scope.totalScore($scope.game.teams[$scope.teamId].scores) >= $scope.game.maxscore) {
-      var confirmPopup = $ionicPopup.confirm({
+      $scope.updateMatchHistory();
+      $scope.updatePlayers();
+      var myPopup = $ionicPopup.show({
         title: $scope.game.teams[$scope.teamId].members[0].name + " / " + $scope.game.teams[$scope.teamId].members[1].name + ' won',
-        template: 'Do you wish to play again?',
-        // buttons: [{text: 'OK', type: 'button-dark'}]
-      });
-      confirmPopup.then(function (res) {
-        $window.localStorage.removeItem('game');
-        $ionicHistory.nextViewOptions({
-          disableBack: true
-        });
-        $scope.updateMatchHistory();
-        $scope.updatePlayers();
-        $state.go('home');
+        template: '<span class="dark">Do you wish to play again?</span>',
+        scope: $scope,
+        buttons: [
+          {
+            text: 'No', 
+            type: 'button-outline button-dark',
+            onTap: function(e) {
+              $window.localStorage.removeItem('game');
+              $ionicHistory.nextViewOptions({
+                disableBack: true
+              });
+              $state.go('home');
+            }
+          },
+          {
+            text: '<b>Yes</b>',
+            type: 'button-dark',
+            onTap: function (e) {
+              $scope.game.teams[0].scores = [];
+              $scope.game.teams[1].scores = [];
+            }
+          }
+        ]
       });
     }
   };

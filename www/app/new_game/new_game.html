@@ -1,7 +1,7 @@
 <ion-view view-title="New Game">
   <ion-content class="padding">
     <div class="card" ng-repeat="team in game.teams">
-      <div class="item item-divider">Team {{ getTeam($index) }} Members</div>
+      <div class="item item-divider item-dark">Team {{ getTeam($index) }} Members</div>
       <label class="item item-input item-select" ng-repeat="member in team.members">
         <div class="input-label">
           Member #{{ $index + 1 }}
@@ -11,7 +11,7 @@
       </label>
     </div>
     <div class="card">
-      <div class="item item-divider">Preferences</div>
+      <div class="item item-divider item-dark">Preferences</div>
       <label class="item item-input item-select">
         <div class="input-label">
           Winning Score

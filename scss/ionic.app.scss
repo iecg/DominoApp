@@ -18,6 +18,41 @@ $dark:                            #444 !default;
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
+$font-size-base:                  17px;
+$popup-border-radius:             2px;
+$popup-background-color:          #fff;
+$popup-width:                     340px;
+$item-font-size:                  17px;
+$button-font-size:                17px;
+$bar-title-font-size:             18px;
+
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
+.logo {
+    display: block;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.popup-head {
+    background-color: $dark;
+    border-radius: 2px 2px 0px 0px;
+}
+
+.popup-title {
+    color: $light;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.popup-body {
+  // padding: 10px 10px 10px 10px;
+  overflow: auto;
+  margin-bottom: -10px;
+}
+
+.input-label {
+    font-size: 18px;
+}
