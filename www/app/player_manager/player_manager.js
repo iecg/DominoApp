@@ -4,7 +4,7 @@ angular.module('app.player_manager', [])
   $stateProvider
   .state('player_manager', {
     url: '/player_manager',
-    templateUrl: 'player_manager/player_manager.html',
+    templateUrl: 'app/player_manager/player_manager.html',
     controller: 'PlayerManagerCtrl'
   });
 })
@@ -17,7 +17,7 @@ angular.module('app.player_manager', [])
   $scope.showAddPlayerPopup = function () {
     var myPopup = $ionicPopup.show({
       title: 'Add Player',
-      templateUrl: 'templates/add_new_player.html',
+      templateUrl: 'app/player_manager/add_new_player.html',
       scope: $scope,
       buttons: [
         {
@@ -57,7 +57,7 @@ angular.module('app.player_manager', [])
     $scope.players.newPlayer = $scope.players[index].name;
     var myPopup = $ionicPopup.show({
       title: 'Edit Player',
-      templateUrl: 'templates/add_new_player.html',
+      templateUrl: 'app/player_manager/add_new_player.html',
       scope: $scope,
       buttons: [
         {

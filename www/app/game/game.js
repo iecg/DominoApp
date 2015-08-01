@@ -17,7 +17,7 @@ angular.module('app.game', [])
     $scope.history = JSON.parse($window.localStorage.history || '[]');
   }, 300);
 
-  $ionicModal.fromTemplateUrl('templates/edit_score.html', {
+  $ionicModal.fromTemplateUrl('app/game/edit_score.html', {
     scope: $scope
   }).then(function (modal) {
     $scope.editScoreModal = modal;
@@ -39,7 +39,7 @@ angular.module('app.game', [])
   $scope.showEditScorePopup = function (scoreId) {
     var myPopup = $ionicPopup.show({
       title: 'Edit Score',
-      templateUrl: 'templates/add_new_score.html',
+      templateUrl: 'app/game/add_new_score.html',
       scope: $scope,
       buttons: [
         {
@@ -79,7 +79,7 @@ angular.module('app.game', [])
     $scope.teamId = teamId;
     var myPopup = $ionicPopup.show({
       title: 'Add Score',
-      templateUrl: 'templates/add_new_score.html',
+      templateUrl: 'app/game/add_new_score.html',
       scope: $scope,
       buttons: [
         {
@@ -107,11 +107,12 @@ angular.module('app.game', [])
     $scope.game.teams[$scope.teamId].scores.push(parseInt($scope.game.newScore));
     $window.localStorage.game = JSON.stringify($scope.game);
     if ($scope.totalScore($scope.game.teams[$scope.teamId].scores) >= $scope.game.maxscore) {
-      var alertPopup = $ionicPopup.alert({
+      var confirmPopup = $ionicPopup.confirm({
         title: $scope.game.teams[$scope.teamId].members[0].name + " / " + $scope.game.teams[$scope.teamId].members[1].name + ' won',
-        buttons: [{text: 'OK', type: 'button-dark'}]
+        template: 'Do you wish to play again?',
+        // buttons: [{text: 'OK', type: 'button-dark'}]
       });
-      alertPopup.then(function (res) {
+      confirmPopup.then(function (res) {
         $window.localStorage.removeItem('game');
         $ionicHistory.nextViewOptions({
           disableBack: true
