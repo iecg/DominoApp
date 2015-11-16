@@ -8,7 +8,7 @@ angular.module('app', [
   'app.about',
   'app.game',
   'app.home',
-  'app.match_history',
+  'app.matches',
   'app.new_game',
   'app.player_manager',
   'app.player_records'

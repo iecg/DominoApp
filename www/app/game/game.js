@@ -14,7 +14,7 @@ angular.module('app.game', [])
     $scope.game = JSON.parse($window.localStorage.game);
     $scope.game.newScore = null;
     $scope.players = JSON.parse($window.localStorage.players);
-    $scope.history = JSON.parse($window.localStorage.history || '[]');
+    $scope.matches = JSON.parse($window.localStorage.matches || '[]');
   }, 300);
 
   $ionicModal.fromTemplateUrl('app/game/edit_score.html', {
@@ -140,34 +140,34 @@ angular.module('app.game', [])
 
   $scope.updateMatchHistory = function() {
     if($scope.game.teams[0].members[0].name === "Player 1") { return; }
-    var history = {"teams":[{"members":[],"score":""},{"members":[],"score":""}],"date":null};
-    history.date = new Date();
+    var matches = {"teams":[{"members":[],"score":""},{"members":[],"score":""}],"date":null};
+    matches.date = new Date();
     if ($scope.teamId === 0) {
-      history.teams[0].members.push($scope.game.teams[0].members[0].name);
-      history.teams[0].members.push($scope.game.teams[0].members[1].name);
-      history.teams[0].score = $scope.totalScore($scope.game.teams[0].scores);
-      history.teams[1].members.push($scope.game.teams[1].members[0].name);
-      history.teams[1].members.push($scope.game.teams[1].members[1].name);
-      history.teams[1].score = $scope.totalScore($scope.game.teams[1].scores);
+      matches.teams[0].members.push($scope.game.teams[0].members[0].name);
+      matches.teams[0].members.push($scope.game.teams[0].members[1].name);
+      matches.teams[0].score = $scope.totalScore($scope.game.teams[0].scores);
+      matches.teams[1].members.push($scope.game.teams[1].members[0].name);
+      matches.teams[1].members.push($scope.game.teams[1].members[1].name);
+      matches.teams[1].score = $scope.totalScore($scope.game.teams[1].scores);
       $scope.game.teams[0].members[0].wins += 1;
       $scope.game.teams[0].members[1].wins += 1;
       $scope.game.teams[1].members[0].losses += 1;
       $scope.game.teams[1].members[1].losses += 1;
     }
     else {
-      history.teams[0].members.push($scope.game.teams[1].members[0].name);
-      history.teams[0].members.push($scope.game.teams[1].members[1].name);
-      history.teams[0].score = $scope.totalScore($scope.game.teams[1].scores);
-      history.teams[1].members.push($scope.game.teams[0].members[0].name);
-      history.teams[1].members.push($scope.game.teams[0].members[1].name);
-      history.teams[1].score = $scope.totalScore($scope.game.teams[0].scores);
+      matches.teams[0].members.push($scope.game.teams[1].members[0].name);
+      matches.teams[0].members.push($scope.game.teams[1].members[1].name);
+      matches.teams[0].score = $scope.totalScore($scope.game.teams[1].scores);
+      matches.teams[1].members.push($scope.game.teams[0].members[0].name);
+      matches.teams[1].members.push($scope.game.teams[0].members[1].name);
+      matches.teams[1].score = $scope.totalScore($scope.game.teams[0].scores);
       $scope.game.teams[0].members[0].losses += 1;
       $scope.game.teams[0].members[1].losses += 1;
       $scope.game.teams[1].members[0].wins += 1;
       $scope.game.teams[1].members[1].wins += 1;
     }
-    $scope.history.push(history);
-    $window.localStorage.history = JSON.stringify($scope.history);
+    $scope.matches.push(matches);
+    $window.localStorage.matches = JSON.stringify($scope.matches);
   };
 
   $scope.updatePlayers = function() {

@@ -1,19 +1,20 @@
-angular.module('app.match_history', [])
+angular.module('app.matches', [])
 
 .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
   $stateProvider
-  .state('match_history', {
-    url: '/match_history',
-    templateUrl: 'app/match_history/match_history.html',
-    controller: 'MatchHistoryCtrl'
+  .state('matches', {
+    url: '/matches',
+    templateUrl: 'app/matches/matches.html',
+    controller: 'MatchesCtrl'
   });
 })
 
-.controller('MatchHistoryCtrl', ['$scope', '$window', '$timeout', '$ionicPopup', function ($scope, $window, $timeout, $ionicPopup) {
+.controller('MatchesCtrl', ['$scope', '$window', '$timeout', '$ionicPopup', function ($scope, $window, $timeout, $ionicPopup) {
   $timeout(function () {
-    $scope.history = JSON.parse($window.localStorage.history);
+    $scope.matches = JSON.parse($window.localStorage.matches);
   }, 300);
-  $scope.clearMatchHistory = function () {
+
+  $scope.clearMatches = function () {
     $ionicPopup.confirm({
       title: 'Are you sure?',
       buttons: [
