@@ -7,11 +7,10 @@ angular.module('app', [
   'ionic',
   'app.about',
   'app.game',
-  'app.home',
+  'app.index',
   'app.matches',
   'app.new_game',
-  'app.player_manager',
-  'app.player_records'
+  'app.players'
 ])
 
 .run(function ($ionicPlatform) {

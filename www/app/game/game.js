@@ -122,7 +122,7 @@ angular.module('app.game', [])
               $ionicHistory.nextViewOptions({
                 disableBack: true
               });
-              $state.go('home');
+              $state.go('index');
             }
           },
           {
