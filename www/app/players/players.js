@@ -12,12 +12,6 @@ angular.module('app.players', [])
 .controller('PlayersCtrl', ['$scope', '$window', '$timeout', '$ionicPopup', function($scope, $window, $timeout, $ionicPopup) {
   $timeout(function() {
     $scope.players = JSON.parse($window.localStorage.players || '[]');
-    $scope.player = {
-      first_name: '',
-      last_name: '',
-      wins: 0,
-      losses: 0
-    };
   }, 300);
   
   var myPopup = function(title_text, button_text, callback) {
@@ -36,29 +30,28 @@ angular.module('app.players', [])
             if($scope.player === null) {
               e.preventDefault();
             } else {
+              $scope.player.full_name = $scope.player.first_name + " " + $scope.player.last_name;
               callback();
+              // $scope.players.sort(function(a, b) {
+              //   return a.name.localeCompare(b.name);
+              // });
+              $window.localStorage.players = JSON.stringify($scope.players);
             }
           }
         }
       ]
     });
-    myPopup.then(function(res) {
-      $scope.player.first_name = '';
-      $scope.player.last_name = '';
-    });
-  }
-
-  var savePlayers = function() {
-    // $scope.players.sort(function(a, b) {
-    //   return a.name.localeCompare(b.name);
-    // });
-    $window.localStorage.players = JSON.stringify($scope.players);
-  }
+  };
 
   $scope.showAddPlayerPopup = function() {
+    $scope.player = {
+      first_name: '',
+      last_name: '',
+      wins: 0,
+      losses: 0
+    };
     myPopup('Add Player', '<b>Add</b>', function() {
       $scope.players.push($scope.player);
-      savePlayers();
     });
   };
   
@@ -66,12 +59,11 @@ angular.module('app.players', [])
     $scope.player = $scope.players[index];
     myPopup('Edit Player', '<b>Edit</b>', function(index) {
       $scope.players[index] = $scope.player;
-      savePlayers();
     });
   };
 
   $scope.removePlayer = function(playerId) {
     $scope.players.splice(playerId, 1);
-    savePlayers();
+    $window.localStorage.players = JSON.stringify($scope.players);
   };
 }]);

@@ -1,13 +1,13 @@
 <ion-view view-title="New Game">
   <ion-content class="padding">
     <div class="card" ng-repeat="team in game.teams">
-      <div class="item item-divider item-dark">Team {{ getTeam($index) }} Members</div>
-      <label class="item item-input item-select" ng-repeat="member in team.members">
+      <div class="item item-divider item-dark">Team {{ $index + 1 }}</div>
+      <label class="item item-input item-select" ng-repeat="member in team.members track by $index">
         <div class="input-label">
-          Member #{{ $index + 1 }}
+          Member {{ $index + 1 }}
         </div>
         <select ng-model="game.teams[$parent.$index].members[$index]"
-        ng-options="player.name for player in players | excludeSelectedPlayers:game.teams:$parent.$index:$index"></select>
+        ng-options="player.full_name for player in players | excludeSelectedPlayers:game.teams:$parent.$index:$index"></select>
       </label>
     </div>
     <div class="card">

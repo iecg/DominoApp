@@ -12,31 +12,39 @@ angular.module('app.new_game', [])
 .controller('NewGameCtrl', ['$scope', '$state', '$window', '$timeout', function ($scope, $state, $window, $timeout) {
   $timeout(function () {
     $scope.players = JSON.parse($window.localStorage.players || '[]');
-    for(var i = 1; i < 5; i++) {
-      var player = {
-        name: null,
-        wins: 0,
-        losses: 0
-      };
-      player.name = "Player " + i;
-      $scope.players.push(player);
-    }
-    $scope.game = {"teams":[{"members":[{},{}],"scores":[]},{"members":[{},{}],"scores":[]}],"maxscore":"200"};
-    $scope.game.teams[0].members[0] = $scope.players[$scope.players.length - 4];
-    $scope.game.teams[0].members[1] = $scope.players[$scope.players.length - 3];
-    $scope.game.teams[1].members[0] = $scope.players[$scope.players.length - 2];
-    $scope.game.teams[1].members[1] = $scope.players[$scope.players.length - 1];
+    $scope.players.unshift({});
+    $scope.game = {teams:[{members:[{},{}],scores:[]},{members:[{},{}],scores:[]}],maxscore:200};
+    $scope.game.teams[0].members[0] = $scope.players[0];
+    $scope.game.teams[0].members[1] = $scope.players[0];
+    $scope.game.teams[1].members[0] = $scope.players[0];
+    $scope.game.teams[1].members[1] = $scope.players[0];
   }, 300);
+  
   $scope.newGame = function () {
     $state.go('game');
     $window.localStorage.game = JSON.stringify($scope.game);
   };
-  $scope.getTeam = function (teamId) {
-    if (teamId) {
-      return 'B';
+}])
+
+.filter('excludeSelectedPlayers', function(){
+  return function(players, teams, teamId, memberId){
+    if(!players || !players.length){
+      return;
     }
-    else {
-      return 'A';
+    function comparePlayers(player_){
+      return function(player){
+        if(player.full_name !== player_.full_name){
+          return true;
+        }
+      };
     }
+    for(var n = 0; n < 2; n++){
+      for(var m = 0; m < 2; m++){
+        if(teamId !== n || memberId !== m){
+          players = players.filter(comparePlayers(teams[n].members[m]));
+        }
+      }
+    }
+    return players;
   };
-}]);
+});

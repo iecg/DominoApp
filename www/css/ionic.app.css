@@ -3337,9 +3337,9 @@ body,
   padding: 0;
   color: #000;
   word-wrap: break-word;
-  font-size: 17px;
+  font-size: 14px;
   font-family: "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
-  line-height: 24px;
+  line-height: 20px;
   text-rendering: optimizeLegibility;
   -webkit-backface-visibility: hidden;
   -webkit-user-drag: none;
@@ -3560,7 +3560,7 @@ ion-infinite-scroll {
  * --------------------------------------------------
  */
 p {
-  margin: 0 0 12px; }
+  margin: 0 0 10px; }
 
 small {
   font-size: 85%; }
@@ -3591,8 +3591,8 @@ h1, h2, h3, h4, h5, h6,
 h1, .h1,
 h2, .h2,
 h3, .h3 {
-  margin-top: 24px;
-  margin-bottom: 12px; }
+  margin-top: 20px;
+  margin-bottom: 10px; }
   h1:first-child, .h1:first-child,
   h2:first-child, .h2:first-child,
   h3:first-child, .h3:first-child {
@@ -3618,44 +3618,44 @@ h3, .h3 {
   h3 + .h3, .h3 + h1, .h3 + .h1,
   .h3 + h2, .h3 + .h2,
   .h3 + h3, .h3 + .h3 {
-    margin-top: 12px; }
+    margin-top: 10px; }
 
 h4, .h4,
 h5, .h5,
 h6, .h6 {
-  margin-top: 12px;
-  margin-bottom: 12px; }
+  margin-top: 10px;
+  margin-bottom: 10px; }
 
 h1, .h1 {
-  font-size: 44px; }
-
-h2, .h2 {
   font-size: 36px; }
 
+h2, .h2 {
+  font-size: 30px; }
+
 h3, .h3 {
-  font-size: 29px; }
+  font-size: 24px; }
 
 h4, .h4 {
-  font-size: 22px; }
+  font-size: 18px; }
 
 h5, .h5 {
-  font-size: 17px; }
+  font-size: 14px; }
 
 h6, .h6 {
-  font-size: 15px; }
+  font-size: 12px; }
 
 h1 small, .h1 small {
-  font-size: 29px; }
+  font-size: 24px; }
 
 h2 small, .h2 small {
-  font-size: 22px; }
+  font-size: 18px; }
 
 h3 small, .h3 small,
 h4 small, .h4 small {
-  font-size: 17px; }
+  font-size: 14px; }
 
 dl {
-  margin-bottom: 24px; }
+  margin-bottom: 20px; }
 
 dt,
 dd {
@@ -3665,12 +3665,12 @@ dt {
   font-weight: bold; }
 
 blockquote {
-  margin: 0 0 24px;
-  padding: 12px 24px;
+  margin: 0 0 20px;
+  padding: 10px 20px;
   border-left: 5px solid gray; }
   blockquote p {
     font-weight: 300;
-    font-size: 21.25px;
+    font-size: 17.5px;
     line-height: 1.25; }
   blockquote p:last-child {
     margin-bottom: 0; }
@@ -3688,7 +3688,7 @@ blockquote:after {
 
 address {
   display: block;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   font-style: normal;
   line-height: 1.42857; }
 
@@ -3991,7 +3991,7 @@ a.subdued {
     text-align: center;
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 500;
     line-height: 44px; }
     .bar .title.title-left {
@@ -4015,7 +4015,7 @@ a.subdued {
       font-size: 20px;
       line-height: 32px; }
     .bar .button.button-icon {
-      font-size: 18px; }
+      font-size: 17px; }
       .bar .button.button-icon .icon:before, .bar .button.button-icon:before, .bar .button.button-icon.icon-left:before, .bar .button.button-icon.icon-right:before {
         vertical-align: top;
         font-size: 32px;
@@ -4024,7 +4024,7 @@ a.subdued {
       padding-right: 2px;
       padding-left: 2px;
       font-weight: 300;
-      font-size: 18px; }
+      font-size: 17px; }
       .bar .button.button-clear .icon:before, .bar .button.button-clear.icon:before, .bar .button.button-clear.icon-left:before, .bar .button.button-clear.icon-right:before {
         font-size: 32px;
         line-height: 32px; }
@@ -4091,7 +4091,7 @@ a.subdued {
     background: none;
     box-shadow: none;
     color: #444;
-    font-size: 18px; }
+    font-size: 17px; }
   .bar-light .button.button-icon {
     border-color: transparent;
     background: none; }
@@ -4112,7 +4112,7 @@ a.subdued {
     background: none;
     box-shadow: none;
     color: #444;
-    font-size: 18px; }
+    font-size: 17px; }
   .bar-stable .button.button-icon {
     border-color: transparent;
     background: none; }
@@ -4133,7 +4133,7 @@ a.subdued {
     background: none;
     box-shadow: none;
     color: #fff;
-    font-size: 18px; }
+    font-size: 17px; }
   .bar-positive .button.button-icon {
     border-color: transparent;
     background: none; }
@@ -4154,7 +4154,7 @@ a.subdued {
     background: none;
     box-shadow: none;
     color: #fff;
-    font-size: 18px; }
+    font-size: 17px; }
   .bar-calm .button.button-icon {
     border-color: transparent;
     background: none; }
@@ -4175,7 +4175,7 @@ a.subdued {
     background: none;
     box-shadow: none;
     color: #fff;
-    font-size: 18px; }
+    font-size: 17px; }
   .bar-assertive .button.button-icon {
     border-color: transparent;
     background: none; }
@@ -4196,7 +4196,7 @@ a.subdued {
     background: none;
     box-shadow: none;
     color: #fff;
-    font-size: 18px; }
+    font-size: 17px; }
   .bar-balanced .button.button-icon {
     border-color: transparent;
     background: none; }
@@ -4217,7 +4217,7 @@ a.subdued {
     background: none;
     box-shadow: none;
     color: #fff;
-    font-size: 18px; }
+    font-size: 17px; }
   .bar-energized .button.button-icon {
     border-color: transparent;
     background: none; }
@@ -4238,7 +4238,7 @@ a.subdued {
     background: none;
     box-shadow: none;
     color: #fff;
-    font-size: 18px; }
+    font-size: 17px; }
   .bar-royal .button.button-icon {
     border-color: transparent;
     background: none; }
@@ -4259,7 +4259,7 @@ a.subdued {
     background: none;
     box-shadow: none;
     color: #fff;
-    font-size: 18px; }
+    font-size: 17px; }
   .bar-dark .button.button-icon {
     border-color: transparent;
     background: none; }
@@ -5484,11 +5484,11 @@ ion-tabs.tabs-color-active-dark .tab-item {
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both; }
   .popup-container .popup {
-    width: 340px;
+    width: 250px;
     max-width: 100%;
     max-height: 90%;
-    border-radius: 2px;
-    background-color: #fff;
+    border-radius: 0px;
+    background-color: rgba(255, 255, 255, 0.9);
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
@@ -5625,7 +5625,7 @@ ion-tabs.tabs-color-active-dark .tab-item {
   padding: 16px;
   border-width: 1px;
   border-style: solid;
-  font-size: 17px; }
+  font-size: 16px; }
   .item h2 {
     margin: 0 0 2px 0;
     font-size: 16px;
@@ -6817,7 +6817,7 @@ legend {
   width: 100%;
   border: 1px solid #ddd;
   color: #444;
-  font-size: 25.5px;
+  font-size: 21px;
   line-height: 2.85714; }
   legend small {
     color: #f8f8f8;
@@ -6829,7 +6829,7 @@ button,
 select,
 textarea {
   font-weight: normal;
-  font-size: 17px;
+  font-size: 14px;
   line-height: 1.42857; }
 
 input,
@@ -6981,7 +6981,7 @@ textarea {
 
 .item-stacked-label input {
   overflow: hidden;
-  height: 53px; }
+  height: 46px; }
 
 .item-floating-label {
   display: block;
@@ -7018,11 +7018,11 @@ input[type="color"] {
   display: block;
   padding-top: 2px;
   padding-left: 0;
-  height: 41px;
+  height: 34px;
   color: #111;
   vertical-align: middle;
-  font-size: 17px;
-  line-height: 19px; }
+  font-size: 14px;
+  line-height: 16px; }
 
 .platform-ios input[type="datetime-local"],
 .platform-ios input[type="date"],
@@ -7085,7 +7085,7 @@ input[type="checkbox"] {
   width: auto; }
 
 input[type="file"] {
-  line-height: 38px; }
+  line-height: 34px; }
 
 .previous-input-focus,
 .cloned-text-input + input,
@@ -7770,7 +7770,7 @@ input:checked + .checkbox-icon:after {
     text-indent: .01px;
     text-overflow: '';
     white-space: nowrap;
-    font-size: 17px;
+    font-size: 14px;
     cursor: pointer;
     direction: rtl; }
   .item-select select::-ms-expand {
@@ -7858,7 +7858,7 @@ progress {
   display: inline-block;
   margin: 0;
   padding: 0 12px;
-  min-width: 53px;
+  min-width: 52px;
   min-height: 47px;
   border-width: 1px;
   border-style: solid;
@@ -7866,7 +7866,7 @@ progress {
   vertical-align: top;
   text-align: center;
   text-overflow: ellipsis;
-  font-size: 17px;
+  font-size: 16px;
   line-height: 42px;
   cursor: pointer; }
   .button:hover {
@@ -9051,19 +9051,3 @@ a.button {
   padding: 10px;
   margin-left: auto;
   margin-right: auto; }
-
-.popup-head {
-  background-color: #444;
-  border-radius: 2px 2px 0px 0px; }
-
-.popup-title {
-  color: #fff;
-  font-weight: 500;
-  font-size: 18px; }
-
-.popup-body {
-  overflow: auto;
-  margin-bottom: -10px; }
-
-.input-label {
-  font-size: 18px; }

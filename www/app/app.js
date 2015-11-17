@@ -13,53 +13,30 @@ angular.module('app', [
   'app.players'
 ])
 
-.run(function ($ionicPlatform) {
-  $ionicPlatform.ready(function () {
+.run(function ($ionicPlatform){
+  $ionicPlatform.ready(function (){
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
-    if (window.cordova && window.cordova.plugins.Keyboard) {
+    if (window.cordova && window.cordova.plugins.Keyboard){
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
     }
-    if (window.StatusBar) {
+    if (window.StatusBar){
       StatusBar.styleDefault();
     }
   });
 })
 
-.config(function ($urlRouterProvider, $ionicConfigProvider) {
+.config(function ($urlRouterProvider, $ionicConfigProvider){
   $ionicConfigProvider.views.maxCache(0);
   $urlRouterProvider.otherwise('/');
 })
 
-.directive('focusMe', function ($timeout) {
+.directive('focusMe', function ($timeout){
   return {
-    link: function (scope, element, attrs) {
-      $timeout(function () {
+    link: function (scope, element, attrs){
+      $timeout(function (){
         element[0].focus();
       }, 200);
     }
   };
 })
-
-.filter('excludeSelectedPlayers', function () {
-  return function (players, teams, teamId, memberId) {
-    if (!players || !players.length) {
-      return;
-    }
-    function comparePlayers(player_) {
-      return function (player) {
-        if (player.name !== player_.name) {
-          return true;
-        }
-      };
-    }
-    for (var n = 0; n < 2; n++) {
-      for (var m = 0; m < 2; m++) {
-        if (teamId !== n || memberId !== m) {
-          players = players.filter(comparePlayers(teams[n].members[m]));
-        }
-      }
-    }
-    return players;
-  };
-});
