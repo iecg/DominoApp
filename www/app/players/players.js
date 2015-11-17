@@ -17,7 +17,7 @@ angular.module('app.players', [])
   var myPopup = function(title_text, button_text, callback) {
     $ionicPopup.show({
       title: title_text,
-      templateUrl: 'app/players/player.html',
+      templateUrl: 'app/players/player_popup.html',
       scope: $scope,
       buttons: [
         {

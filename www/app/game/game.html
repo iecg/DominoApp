@@ -1,19 +1,19 @@
 <ion-view view-title="Domino Score">
   <ion-content>
     <div class="card" ng-repeat="team in game.teams">
-      <div class="item item-divider item-dark">
-        {{ team.members[0].name }} / {{ team.members[1].name }}
-      </div>
       <div class="item">
-        Total Score {{ totalScore(team.scores) }}
+        <h2>{{ team.members[0].full_name }} and {{ team.members[1].full_name }}</h2>
+        <p>Total Score {{ totalScore(team.scores) }}</p>
       </div>
-      <div class="item item-icon-left" ng-click="showAddScorePopup($index)">
-        <i class="icon ion-plus-round"></i>
-        Add Score
-      </div>
-      <div class="item item-icon-left" ng-click="showEditScoreModal($index)">
-        <i class="icon ion-edit"></i>
-        Edit Score
+      <div class="item tabs tabs-secondary tabs-icon-left">
+        <a class="tab-item" href="#" ng-click="showAddScorePopup($index)">
+          <i class="icon ion-plus-round"></i>
+          Add Score
+        </a>
+        <a class="tab-item" ng-click="showEditScorePopup($index)">
+          <i class="icon ion-edit"></i>
+          Edit Last Score
+        </a>
       </div>
     </div>
     <!--<pre>{{ game | json }}</pre>-->
