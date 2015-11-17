@@ -7,7 +7,7 @@
   <ion-content>
     <div class="list card" ng-repeat="player in players track by $index" ng-hide="!players.length">
       <div class="item">
-        <h2>{{ player.full_name }}</h2>
+        <h2>{{ player.fullName }}</h2>
         <p>Wins: {{ player.wins }}</p>
         <p>Losses: {{ player.losses }}</p>
       </div>
@@ -16,7 +16,7 @@
           <i class="icon ion-edit"></i>
           Edit
         </a>
-        <a class="tab-item" ng-click="removePlayer($index)">
+        <a class="tab-item" ng-click="deletePlayer($index)">
           <i class="icon ion-trash-a"></i>
           Delete
         </a>

@@ -7,7 +7,7 @@
           Member {{ $index + 1 }}
         </div>
         <select ng-model="game.teams[$parent.$index].members[$index]"
-        ng-options="player.full_name for player in players | excludeSelectedPlayers:game.teams:$parent.$index:$index"></select>
+        ng-options="player.fullName for player in players | excludeSelectedPlayers:game.teams:$parent.$index:$index"></select>
       </label>
     </div>
     <div class="card">
@@ -16,7 +16,7 @@
         <div class="input-label">
           Winning Score
         </div>
-        <select ng-model="game.maxscore">
+        <select ng-model="game.maxScore">
           <option selected>200</option>
           <option>100</option>
         </select>

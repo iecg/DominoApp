@@ -2,7 +2,7 @@
   <ion-content>
     <div class="card" ng-repeat="team in game.teams">
       <div class="item">
-        <h2>{{ team.members[0].full_name }} and {{ team.members[1].full_name }}</h2>
+        <h2>{{ team.members[0].fullName }} and {{ team.members[1].fullName }}</h2>
         <p>Total Score {{ totalScore(team.scores) }}</p>
       </div>
       <div class="item tabs tabs-secondary tabs-icon-left">
