@@ -1,29 +1,29 @@
 <ion-view view-title="Players">
-  <ion-nav-buttons side="right">
-    <button class="button button-icon" ng-click="showAddPlayerPopup()">
-      <i class="icon ion-plus-round"></i>
-    </button>
-  </ion-nav-buttons>
-  <ion-content>
-    <div class="list card" ng-repeat="player in players track by $index" ng-hide="!players.length">
-      <div class="item">
-        <h2>{{ player.fullName }}</h2>
-        <p>Wins: {{ player.wins }}</p>
-        <p>Losses: {{ player.losses }}</p>
-      </div>
-      <div class="item tabs tabs-icon-left">
-        <a class="tab-item" href="#" ng-click="showEditPlayerPopup($index)">
-          <i class="icon ion-edit"></i>
-          Edit
-        </a>
-        <a class="tab-item" ng-click="deletePlayer($index)">
-          <i class="icon ion-trash-a"></i>
-          Delete
-        </a>
-      </div>
-    </div>
-    <div class="card" ng-hide="players.length">
-      <div class="item">No players found</div>
-    </div>
-  </ion-content>
+<ion-nav-buttons side="right">
+<button class="button button-icon" ng-click="showAddPlayerPopup()">
+  <i class="icon ion-plus-round"></i>
+</button>
+</ion-nav-buttons>
+<ion-content>
+<div class="list card" ng-repeat="player in players track by $index" ng-hide="!players.length">
+  <div class="item">
+    <h2>{{ player.fullName }}</h2>
+    <p>Wins: {{ player.wins }}</p>
+    <p>Losses: {{ player.losses }}</p>
+  </div>
+  <div class="item tabs tabs-icon-left">
+    <a class="tab-item" href="#" ng-click="showEditPlayerPopup($index)">
+      <i class="icon ion-edit"></i>
+      Edit
+    </a>
+    <a class="tab-item" ng-click="deletePlayer($index)">
+      <i class="icon ion-trash-a"></i>
+      Delete
+    </a>
+  </div>
+</div>
+<div class="card" ng-hide="players.length">
+  <div class="item">No players found</div>
+</div>
+</ion-content>
 </ion-view>

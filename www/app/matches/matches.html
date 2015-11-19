@@ -1,19 +1,19 @@
 <ion-view view-title="Matches">
-  <ion-content class="">
-    <div class="card" ng-hide="!matches.length" ng-repeat="match in matches | orderBy:'-date' track by $index">
-      <div class="item">
-        <div class="row" ng-repeat="team in match.teams">
-          <div class="col">{{ team.members[0] }} and {{ team.members[1] }}</div>
-          <div class="col text-right">{{ team.score }}</div>
-        </div>
-      </div>
-      <div class="item">{{ match.date | date:'medium' }}</div>
+<ion-content class="">
+<div class="card" ng-hide="!matches.length" ng-repeat="match in matches | orderBy:'-date' track by $index">
+  <div class="item">
+    <div class="row" ng-repeat="team in match.teams">
+      <div class="col">{{ team.members[0] }} and {{ team.members[1] }}</div>
+      <div class="col text-right">{{ team.score }}</div>
     </div>
-    <div class="card" ng-hide="matches.length">
-      <div class="item">No matches found</div>
-    </div>
-    <!-- <button class="button button-block button-dark" ng-click="clearMatches()" ng-hide="!matches.length"> -->
-    <!--   Clear Matches -->
-    <!-- </Button> -->
-  </ion-content>
+  </div>
+  <div class="item">{{ match.date | date:'medium' }}</div>
+</div>
+<div class="card" ng-hide="matches.length">
+  <div class="item">No matches found</div>
+</div>
+<!-- <button class="button button-block button-dark" ng-click="clearMatches()" ng-hide="!matches.length"> -->
+<!--   Clear Matches -->
+<!-- </Button> -->
+</ion-content>
 </ion-view>

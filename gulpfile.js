@@ -16,16 +16,16 @@ gulp.task('default', ['sass']);
 
 gulp.task('sass', function(done) {
   gulp.src('./scss/ionic.app.scss')
-    .pipe(sass({
-      errLogToConsole: true
-    }))
-    .pipe(gulp.dest('./www/css/'))
-    .pipe(minifyCss({
-      keepSpecialComments: 0
-    }))
-    .pipe(rename({ extname: '.min.css' }))
-    .pipe(gulp.dest('./www/css/'))
-    .on('end', done);
+  .pipe(sass({
+    errLogToConsole: true
+  }))
+  .pipe(gulp.dest('./www/css/'))
+  .pipe(minifyCss({
+    keepSpecialComments: 0
+  }))
+  .pipe(rename({ extname: '.min.css' }))
+  .pipe(gulp.dest('./www/css/'))
+  .on('end', done);
 });
 
 gulp.task('watch', function() {
@@ -34,9 +34,9 @@ gulp.task('watch', function() {
 
 gulp.task('install', ['git-check'], function() {
   return bower.commands.install()
-    .on('log', function(data) {
-      gutil.log('bower', gutil.colors.cyan(data.id), data.message);
-    });
+  .on('log', function(data) {
+    gutil.log('bower', gutil.colors.cyan(data.id), data.message);
+  });
 });
 
 gulp.task('git-check', function(done) {
@@ -55,8 +55,8 @@ gulp.task('git-check', function(done) {
 gulp.task('test', function(done) {
   karma.start({
     configFile: __dirname + '/tests/my.conf.js',
-    singlerun: true
+    singleRun: true
   }, function() {
     done();
-  })
+  });
 });
