@@ -1,9 +1,8 @@
 angular.module('players', [])
 
-.controller('PlayersCtrl', ['$scope', '$window', '$timeout', '$ionicPopup', function ($scope, $window, $timeout, $ionicPopup) {
-  $timeout(function () {
-    $scope.players = JSON.parse($window.localStorage.players || '[]');
-  }, 300);
+.controller('PlayersCtrl', ['$scope', '$window', '$timeout', '$ionicPopup', 'Players', function ($scope, $window, $timeout, $ionicPopup, Players) {
+  $scope.players = Players.all(); 
+  console.log(JSON.stringify($scope.players));
 
   var myPopup = function (popupTitle, buttonText, callback) {
     $ionicPopup.show({
@@ -21,12 +20,7 @@ angular.module('players', [])
             if ($scope.player === null) {
               e.preventDefault();
             } else {
-              $scope.player.fullName = $scope.player.firstName + ' ' + $scope.player.lastName;
               callback();
-              // $scope.players.sort(function (a, b) {
-              //   return a.name.localeCompare(b.name);
-              // });
-              $window.localStorage.players = JSON.stringify($scope.players);
             }
           }
         }
@@ -35,8 +29,9 @@ angular.module('players', [])
   };
 
   $scope.showAddPlayerPopup = function () {
-    $scope.player = JSON.parse('./player.json');
+    $scope.player = Players.new();
     myPopup('Add Player', '<b>Add</b>', function () {
+      $scope.player = Players.create($scope.player.firstName, $scope.player.lastName);
       $scope.players.push($scope.player);
     });
   };
@@ -45,11 +40,12 @@ angular.module('players', [])
     $scope.player = $scope.players[index];
     myPopup('Edit Player', '<b>Edit</b>', function (index) {
       $scope.players[index] = $scope.player;
+      // Players.update($scope.player);
     });
   };
 
-  $scope.deletePlayer = function (playerId) {
-    $scope.players.splice(playerId, 1);
-    $window.localStorage.players = JSON.stringify($scope.players);
+  $scope.deletePlayer = function (index) {
+    Players.delete($scope.players[index]);
+    $scope.players.splice(index, 1);
   };
 }]);
