@@ -1,8 +1,7 @@
 angular.module('players', [])
 
-.controller('PlayersCtrl', ['$scope', '$window', '$timeout', '$ionicPopup', 'Players', function ($scope, $window, $timeout, $ionicPopup, Players) {
-  $scope.players = Players.all(); 
-  console.log(JSON.stringify($scope.players));
+.controller('PlayersCtrl', ['$scope', '$ionicPopup', 'Players', function ($scope, $ionicPopup, Players) {
+  $scope.players = Players.all();
 
   var myPopup = function (popupTitle, buttonText, callback) {
     $ionicPopup.show({
@@ -31,21 +30,21 @@ angular.module('players', [])
   $scope.showAddPlayerPopup = function () {
     $scope.player = Players.new();
     myPopup('Add Player', '<b>Add</b>', function () {
-      $scope.player = Players.create($scope.player.firstName, $scope.player.lastName);
-      $scope.players.push($scope.player);
+      Players.create($scope.player.firstName, $scope.player.lastName);
+      $scope.players = Players.all();
     });
   };
- 
+
   $scope.showEditPlayerPopup = function (index) {
     $scope.player = $scope.players[index];
     myPopup('Edit Player', '<b>Edit</b>', function (index) {
-      $scope.players[index] = $scope.player;
-      // Players.update($scope.player);
+      Players.update($scope.player);
+      $scope.players = Players.all();
     });
   };
 
   $scope.deletePlayer = function (index) {
     Players.delete($scope.players[index]);
-    $scope.players.splice(index, 1);
+    $scope.players = Players.all();
   };
 }]);

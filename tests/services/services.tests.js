@@ -34,8 +34,12 @@ describe('Players unit test', function() {
 
   it('Test 4: player.win()', inject(function(Players) {
     var player = Players.new();
+    Players.create("isaac", "cocar");
+    var players = Players.all();
+    players[0].win();
     player.win();
     expect(player.wins).toEqual(1);
+    expect(players[0].wins).toEqual(1);
   }));
 
   it('Test 5: Players.get()', inject(function(Players) {

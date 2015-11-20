@@ -7,7 +7,7 @@
 <ion-content>
 <div class="list card" ng-repeat="player in players track by $index" ng-hide="!players.length">
   <div class="item">
-    <h2>{{ player.fullName }}</h2>
+    <h2>{{ player.fullName() }}</h2>
     <p>Wins: {{ player.wins }}</p>
     <p>Losses: {{ player.losses }}</p>
   </div>

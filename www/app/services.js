@@ -14,46 +14,55 @@ angular.module('services', [])
     } else {
       this.lastName = '';
     }
-    if (this.firstName !== '' && this.lastName !== '') {
-      this.fullName = this.firstName + ' ' + this.lastName;
-    } else {
-      this.fullName = '';
-    }
     this.id = id || '';
     this.wins = wins || 0;
     this.losses = losses || 0;
-    this.win = function () {
-      this.wins++;
-    };
-    this.lose = function () {
-      this.losses++;
-    };
+  };
+
+  var fullName = function () {
+    if (this.firstName !== '' && this.lastName !== '') {
+      return this.firstName + ' ' + this.lastName;
+    } else {
+      return '';
+    }
+  };
+
+  var win = function () {
+    this.wins++;
+  };
+
+  var lose = function () {
+    this.losses++;
   };
 
   var playerId = JSON.parse($window.localStorage.playerId || '1');
   var Players = JSON.parse($window.localStorage.Players || '[]');
 
-  Players.forEach(function () {
-    return function (player) {
-      Players[player.id] = player;
-    };
-  });
-
   this.new = function (firstName, lastName, id, wins, losses) {
     var player = new Player(firstName, lastName, id, wins, losses);
+    player.fullName = fullName;
+    player.win = win;
+    player.lose = lose;
     return player;
   };
 
   this.create = function (firstName, lastName) {
     var player = new Player(firstName, lastName, playerId++);
-    $window.localStorage.playerId = JSON.stringify(playerId);
+    player.fullName = fullName;
+    player.win = win;
+    player.lose = lose;
     Players[player.id] = player;
+    $window.localStorage.playerId = JSON.stringify(playerId);
     $window.localStorage.Players = JSON.stringify(Players);
     return player;
   };
 
   this.get = function (playerId) {
-    return Players[playerId];
+    var player = Players[playerId];
+    player.fullName = fullName;
+    player.win = win;
+    player.lose = lose;
+    return player;
   };
 
   this.update = function (player) {
@@ -67,8 +76,14 @@ angular.module('services', [])
   };
 
   this.all = function () {
-    return Players.filter(function (player) {
+    var players = Players.filter(function (player) {
       return player !== null;
     });
+    for (var i = 0; i < players.length; i++) {
+      players[i].fullName = fullName;
+      players[i].win = win;
+      players[i].lose = lose;
+    }
+    return players;
   };
 }]);
