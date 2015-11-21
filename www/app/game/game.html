@@ -2,8 +2,8 @@
 <ion-content>
 <div class="card" ng-repeat="team in game.teams">
   <div class="item">
-    <h2>{{ team.members[0].fullName }} and {{ team.members[1].fullName }}</h2>
-    <p>Total Score {{ totalScore(team.scores) }}</p>
+    <h2>{{ team.name() || 'Team ' + ($index + 1) }}</h2>
+    <p>Total Score {{ team.totalScore() }}</p>
   </div>
   <div class="item tabs tabs-secondary tabs-icon-left">
     <a class="tab-item" href="#" ng-click="showAddScorePopup($index)">
@@ -16,6 +16,6 @@
     </a>
   </div>
 </div>
-<!--<pre>{{ game | json }}</pre>-->
+<!-- <pre>{{ game | json }}</pre> -->
 </ion-content>
 </ion-view>

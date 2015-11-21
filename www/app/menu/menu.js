@@ -1,8 +1,8 @@
 angular.module('menu', [])
 
-.controller('MenuCtrl', ['$scope', '$state', '$ionicPopup', '$window', '$ionicHistory', function ($scope, $state, $ionicPopup, $window, $ionicHistory) {
+.controller('MenuCtrl', ['$scope', '$state', '$ionicPopup', '$window', '$ionicHistory', 'Game', function ($scope, $state, $ionicPopup, $window, $ionicHistory, Game) {
   $scope.continueGame = function () {
-    if (angular.equals({}, JSON.parse($window.localStorage.game || '{}'))) {
+    if (angular.equals({}, JSON.parse($window.localStorage.Game || '{}'))) {
       $ionicPopup.alert({
         title: 'There is no saved game',
         buttons: [{text: 'OK', type: 'button-dark'}]
@@ -14,8 +14,8 @@ angular.module('menu', [])
   };
 
   $scope.quickGame = function () {
-    $scope.game = JSON.parse('./game.json');
-    $window.localStorage.game = JSON.stringify($scope.game);
+    var game = Game.new();
+    Game.save(game);
     $state.go('game');
   };
 }]);

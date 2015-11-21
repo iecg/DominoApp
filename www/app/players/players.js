@@ -30,7 +30,7 @@ angular.module('players', [])
   $scope.showAddPlayerPopup = function () {
     $scope.player = Players.new();
     myPopup('Add Player', '<b>Add</b>', function () {
-      Players.create($scope.player.firstName, $scope.player.lastName);
+      Players.create($scope.player);
       $scope.players = Players.all();
     });
   };

@@ -7,7 +7,8 @@
       Member {{ $index + 1 }}
     </div>
     <select ng-model="game.teams[$parent.$index].members[$index]"
-            ng-options="player.fullName for player in players | excludeSelectedPlayers:game.teams:$parent.$index:$index"></select>
+            ng-options="player.fullName() for player in players |
+                        excludeSelectedPlayers:game.teams:$parent.$index:$index"></select>
   </label>
 </div>
 <div class="card">
@@ -25,6 +26,7 @@
 <button class="button button-block button-dark" ng-click="newGame()">
   Start New Game
 </button>
-<!--<pre>{{ game | json }}</pre>-->
+<!-- <pre>{{ game | json }}</pre> -->
+<!-- <pre>{{ players | json }}</pre> -->
 </ion-content>
 </ion-view>

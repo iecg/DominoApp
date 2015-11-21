@@ -3,8 +3,8 @@
 <div class="card" ng-hide="!matches.length" ng-repeat="match in matches | orderBy:'-date' track by $index">
   <div class="item">
     <div class="row" ng-repeat="team in match.teams">
-      <div class="col">{{ team.members[0] }} and {{ team.members[1] }}</div>
-      <div class="col text-right">{{ team.score }}</div>
+      <div class="col">{{ team.name() }}</div>
+      <div class="col text-right">{{ team.totalScore() }}</div>
     </div>
   </div>
   <div class="item">{{ match.date | date:'medium' }}</div>

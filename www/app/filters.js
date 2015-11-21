@@ -7,7 +7,10 @@ angular.module('filters', [])
     }
     function comparePlayers(player_) {
       return function (player) {
-        if (player.full_name !== player_.full_name) {
+        if(player.id === 0) {
+          return true;
+        }
+        if (player.id !== player_.id) {
           return true;
         }
       };

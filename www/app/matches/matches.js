@@ -1,9 +1,7 @@
 angular.module('matches', [])
 
-.controller('MatchesCtrl', ['$scope', '$window', '$timeout', '$ionicPopup', function ($scope, $window, $timeout, $ionicPopup) {
-  $timeout(function () {
-    $scope.matches = JSON.parse($window.localStorage.matches);
-  }, 300);
+.controller('MatchesCtrl', ['$scope', '$ionicPopup', 'Matches', function ($scope, $ionicPopup, Matches) {
+  $scope.matches = Matches.all();
 
   $scope.clearMatches = function () {
     $ionicPopup.confirm({
@@ -16,8 +14,6 @@ angular.module('matches', [])
           text: '<b>Yes</b>',
           type: 'button-dark',
           onTap: function (e) {
-            $window.localStorage.history = JSON.stringify([]);
-            $scope.history = [];
           }
         }
       ]
